@@ -30,7 +30,7 @@ def syncBlockchain():
     for i in range(lastTrustedBlock+1, currBlock):
         if not i in hash_set:
             print("repairing {}".format(i))
-            storeBlockInDB(i, nodeAPI)
+            q.enqueue(storeBlockInDB, i, nodeAPI)
             stopTrust = True
         if not stopTrust:
             newLastTrusted = i
