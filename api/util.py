@@ -4,14 +4,14 @@ ANC_ID = "602c79718b16e442de58778e148d0b1084e3b2dffd5de6b7b16cee7969282de7"
 MAINNET_PORT = 10331
 TESTNET_PORT = 20331
 
-NEO_SEED_LIST = ["https://seed{}.neo.org".format(x) for x in [1,2,3,4,5]]
+NEO_SEED_LIST = ["https://seed{}.neo.org".format(x) for x in [1]]
 NEO_MAINNET = [node + ":" + str(MAINNET_PORT) for node in NEO_SEED_LIST]
 
 SWITCHEO_SEED_LIST = ["https://seed{}.switcheo.network".format(x) for x in [1,2,3,4]]
 SWITCHEO_MAINNET = [node + ":" + str(MAINNET_PORT) for node in SWITCHEO_SEED_LIST]
 SWITCHEO_TESTNET = [node + ":" + str(TESTNET_PORT) for node in SWITCHEO_SEED_LIST]
 
-MAINNET_SEEDS = NEO_MAINNET
+MAINNET_SEEDS = SWITCHEO_MAINNET + NEO_MAINNET
 TESTNET_SEEDS = SWITCHEO_TESTNET
 
 GENERATION_AMOUNT = [8, 7, 6, 5, 4, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
