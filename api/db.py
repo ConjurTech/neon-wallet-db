@@ -6,7 +6,7 @@ from rq import Queue
 MONGO_URL = os.environ.get('MONGO_URL')
 MONGO_DB_NAME = os.environ.get('MONGO_DB_NAME')
 
-client = MongoClient(MONGO_URL)
+client = MongoClient(MONGO_URL, connect=False)
 db = client[MONGO_DB_NAME]
 
 # db["meta"].insert_one({"name":"lastTrustedBlock", "value":1162327})

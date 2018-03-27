@@ -6,6 +6,7 @@ from rq import Queue
 from .db import db as blockchain_db
 from .util import MAINNET_SEEDS, TESTNET_SEEDS
 import time
+import logging
 from .scripts import add_fees
 
 nodeAPI = os.environ.get('NODEAPI')
@@ -98,12 +99,12 @@ def storeBlockTransactions(block):
                 try:
                     print("trying...", vin['txid'], vin['vout'])
                     lookup_t = blockchain_db['transactions'].find_one({"txid": vin['txid']})
-                    print("lookup_t", lookup_t)
+                    # print("lookup_t", lookup_t)
                     input_transaction_data.append(lookup_t['vout'][vin['vout']])
-                    print(input_transaction_data)
+                    # print(input_transaction_data)
                     input_transaction_data[-1]['txid'] = vin['txid']
-                except:
-                    print("failed on transaction lookup:")
+                except Exception as e:
+                    logging.exception("failed on transaction lookup")
                     print(vin['txid'], vin['vout'])
                     return False, None, None
             t['vin_verbose'] = input_transaction_data
