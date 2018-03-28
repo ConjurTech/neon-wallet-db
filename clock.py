@@ -18,7 +18,7 @@ def pollNode():
     q.enqueue(checkSeeds)
 
 # intermittantly check for any blocks we missed by polling
-@sched.scheduled_job('interval', seconds=30, max_instances=1)
+@sched.scheduled_job('interval', seconds=120, max_instances=1)
 def syncBlockchain():
     nodeAPI = get_highest_node()
     currBlock = getBlockCount(nodeAPI)["result"]
